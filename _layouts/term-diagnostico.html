@@ -1,0 +1,86 @@
+---
+layout: term-base
+---
+{% assign a = site.data.author %}
+<nav aria-label="Ruta de navegación" class="breadcrumb">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="{{ site.baseurl }}/"><span itemprop="name">Inicio</span></a>
+      <meta itemprop="position" content="1">
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <span itemprop="name">{{ page.termino }}</span>
+      <meta itemprop="position" content="2">
+    </li>
+  </ol>
+</nav>
+<article class="term term--diagnostico" itemscope itemtype="https://schema.org/MedicalCondition">
+  <header class="term__header">
+    <div class="term__type-badge term__type-badge--diagnostico">🏥 Término diagnóstico</div>
+    <h1 class="term__title" itemprop="name">{{ page.termino }}</h1>
+    <div class="term__meta">
+      <span class="badge badge--area">{{ page.area }}</span>
+      <span class="badge badge--id">{{ page.term_id }}</span>
+      {% if page.dsm5tr.aplica %}<span class="badge badge--dsm">DSM-5-TR {{ page.dsm5tr.codigo }}</span>{% endif %}
+      {% if page.cie11.aplica %}<span class="badge badge--cie">CIE-11 {{ page.cie11.codigo }}</span>{% endif %}
+      <span class="badge badge--confianza">Confianza {{ page.nivel_confianza }}</span>
+    </div>
+  </header>
+  <section><h2>Definición de {{ page.termino }}</h2>
+    <p itemprop="description">{{ page.definicion_corta }}</p></section>
+  <section><h2>Definición técnica</h2>
+    <div>{{ page.definicion_tecnica | markdownify }}</div></section>
+  <section><h2>Ejemplo clínico</h2>
+    <blockquote>{{ page.ejemplo }}</blockquote></section>
+  {% if page.dsm5tr.aplica %}
+  <section><h2>{{ page.termino }} en el DSM-5-TR (APA, 2022)</h2>
+    <dl>
+      {% if page.dsm5tr.categoria %}<div><dt>Categoría</dt><dd>{{ page.dsm5tr.categoria }}</dd></div>{% endif %}
+      {% if page.dsm5tr.codigo %}<div><dt>Código</dt><dd><code>{{ page.dsm5tr.codigo }}</code></dd></div>{% endif %}
+      {% if page.dsm5tr.criterios_resumen %}<div><dt>Criterios</dt><dd>{{ page.dsm5tr.criterios_resumen }}</dd></div>{% endif %}
+    </dl></section>
+  {% endif %}
+  {% if page.cie11.aplica %}
+  <section><h2>{{ page.termino }} en la CIE-11 (OMS, 2022)</h2>
+    <dl>
+      {% if page.cie11.codigo %}<div><dt>Código CIE-11</dt><dd><code>{{ page.cie11.codigo }}</code></dd></div>{% endif %}
+      {% if page.cie11.nombre_cie %}<div><dt>Nombre oficial</dt><dd>{{ page.cie11.nombre_cie }}</dd></div>{% endif %}
+    </dl></section>
+  {% endif %}
+  {% if page.diagnostico_diferencial and page.diagnostico_diferencial.size > 0 %}
+  <section><h2>Diagnóstico diferencial de {{ page.termino }}</h2>
+    <div class="diferencial-grid">
+      {% for item in page.diagnostico_diferencial %}
+      <div class="diferencial-card">
+        <h3>{{ item.termino }}</h3>
+        <p>{{ item.diferencia }}</p>
+      </div>
+      {% endfor %}
+    </div></section>
+  {% endif %}
+  {% if page.no_confundir_con and page.no_confundir_con.size > 0 %}
+  <section><h2>No confundir con</h2>
+    <ul>{% for t in page.no_confundir_con %}<li><strong>{{ t }}</strong></li>{% endfor %}</ul></section>
+  {% endif %}
+  {% if page.relaciones and page.relaciones.size > 0 %}
+  <section><h2>Conceptos relacionados</h2>
+    <ul>{% for r in page.relaciones %}<li><a href="{{ site.baseurl }}/terminos/{{ r | slugify }}/">{{ r }}</a></li>{% endfor %}</ul></section>
+  {% endif %}
+  <section><h2>Bases de datos del Dr. Juan Moisés de la Serna</h2>
+    {% include author-databases.html area=page.area %}</section>
+  {% if page.fuentes and page.fuentes.size > 0 %}
+  <section><h2>Referencias</h2>
+    <ol>{% for f in page.fuentes %}<li>{{ f }}</li>{% endfor %}</ol></section>
+  {% endif %}
+  <section><h2>Cómo citar «{{ page.termino }}»</h2>
+    <div class="term__cita">
+      <h3>APA 7</h3>
+      <pre><code>{{ a.name_apa }} (2026). {{ page.termino }} [DSM-5-TR: {{ page.dsm5tr.codigo }} / CIE-11: {{ page.cie11.codigo }}]. En {{ site.title }} (v{{ page.version }}). https://doi.org/{{ site.doi }}</code></pre>
+    </div></section>
+  {% include author-card.html %}
+  <footer class="term__footer">
+    <p>Editado por <a href="{{ a.url }}" rel="author">{{ a.full_title }}</a>
+    · ORCID: <a href="{{ a.profiles.orcid.url }}">{{ a.profiles.orcid.id }}</a>
+    · Revisión: <time datetime="{{ page.fecha_revision }}">{{ page.fecha_revision }}</time></p>
+  </footer>
+</article>

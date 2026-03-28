@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  {% include seo-head.html %}
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
+</head>
+<body class="page-default">
+  <a href="#main-content" class="skip-link">Ir al contenido principal</a>
+  {% include header.html %}
+  <main id="main-content" role="main" tabindex="-1">
+    <div class="container">
+      {{ content }}
+    </div>
+  </main>
+  {% include footer.html %}
+</body>
+</html>
