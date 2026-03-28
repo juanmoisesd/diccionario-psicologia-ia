@@ -1,0 +1,21 @@
+term_id,termino,area,definicion_corta,nivel_confianza,version,fecha_revision
+PSY-000001,Ansiedad,Psicología clínica,"Estado emocional de aprensión, tensión y preocupación anticipatoria ante amenazas percibidas, reales o imaginadas.",A,1.0.0,2026-03-28
+PSY-000002,Depresión,Psicología clínica,Trastorno del estado de ánimo caracterizado por tristeza persistente y pérdida de interés o placer.,A,1.0.0,2026-03-28
+PSY-000003,Cognición,Psicología cognitiva,Conjunto de procesos mentales mediante los cuales los organismos adquieren y procesan la información.,A,1.0.0,2026-03-28
+PSY-000004,Memoria,Psicología cognitiva,Capacidad cognitiva de codificar y almacenar y recuperar información adquirida por la experiencia.,A,1.0.0,2026-03-28
+PSY-000005,Percepción,Psicología cognitiva,Proceso activo de organización e interpretación de la información sensorial para construir una representación del entorno.,A,1.0.0,2026-03-28
+PSY-000006,Emoción,Psicología cognitiva,Respuesta multidimensional (fisiológica y subjetiva y conductual) ante estímulos con relevancia para el organismo.,A,1.0.0,2026-03-28
+PSY-000007,Condicionamiento clásico,Psicología conductual,Forma de aprendizaje asociativo en la que un estímulo neutro adquiere la capacidad de provocar una respuesta refleja.,A,1.0.0,2026-03-28
+PSY-000008,Condicionamiento operante,Psicología conductual,Tipo de aprendizaje en el que la probabilidad de una conducta cambia según las consecuencias que le siguen.,A,1.0.0,2026-03-28
+PSY-000009,Disonancia cognitiva,Psicología social,Estado de malestar psicológico que surge cuando una persona mantiene simultáneamente dos cogniciones inconsistentes.,A,1.0.0,2026-03-28
+PSY-000010,Autoeficacia,Psicología cognitiva,Creencia de una persona en su capacidad para ejecutar con éxito las conductas necesarias para alcanzar resultados.,A,1.0.0,2026-03-28
+PSY-000011,Resiliencia,Psicología positiva,Capacidad del individuo para adaptarse positivamente ante la adversidad y el trauma u otras fuentes de estrés.,A,1.0.0,2026-03-28
+PSY-000012,Apego,Psicología del desarrollo,Vínculo afectivo profundo y duradero que une a un niño con su figura cuidadora y que sirve de base para el desarrollo socioemocional.,A,1.0.0,2026-03-28
+PSY-000013,Trauma psicológico,Psicología clínica,Experiencia de eventos que desbordan la capacidad de afrontamiento del individuo y generan efectos psicológicos negativos persistentes.,A,1.0.0,2026-03-28
+PSY-000014,Inteligencia emocional,Psicología cognitiva,Capacidad para percibir y usar y comprender y gestionar las emociones propias y ajenas de forma eficaz.,A,1.0.0,2026-03-28
+PSY-000015,Inconsciente,Psicoanálisis,Parte de la vida mental que contiene procesos y deseos inaccesibles a la conciencia ordinaria.,A,1.0.0,2026-03-28
+PSY-000016,Esquema cognitivo,Psicología cognitiva,Estructura mental organizada de conocimiento que guía la percepción e interpretación y recuerdo de la información.,A,1.0.0,2026-03-28
+PSY-000017,Autoestima,Psicología clínica,Valoración global y afectiva que una persona tiene de sí misma.,A,1.0.0,2026-03-28
+PSY-000018,Empatía,Psicología social,Capacidad de comprender y compartir los estados emocionales y perspectivas de otra persona.,A,1.0.0,2026-03-28
+PSY-000019,Motivación,Psicología cognitiva,Conjunto de procesos internos que inician y dirigen y mantienen la conducta hacia metas.,A,1.0.0,2026-03-28
+PSY-000020,Atención,Psicología cognitiva,Proceso cognitivo que permite seleccionar y concentrar los recursos mentales en estímulos o tareas relevantes.,A,1.0.0,2026-03-28

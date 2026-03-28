@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://juanmoisesd.github.io/diccionario-psicologia-ia/data/schema.json",
+  "title": "Término del Diccionario de Psicología",
+  "description": "Esquema de validación para entradas del Diccionario de Psicología en Español para IA",
+  "type": "object",
+  "required": ["term_id","termino","area","definicion_corta","definicion_tecnica","ejemplo","no_confundir_con","relaciones","nivel_confianza","fuentes","version","fecha_revision"],
+  "properties": {
+    "term_id": {"type": "string", "pattern": "^PSY-[0-9]{6}$"},
+    "termino": {"type": "string", "minLength": 1, "maxLength": 200},
+    "area": {"type": "string", "enum": ["Psicología clínica","Psicología cognitiva","Psicología social","Psicología del desarrollo","Neuropsicología","Psicoanálisis","Psicometría","Psicología conductual","Psicología humanista","Psicología educativa","Psicología de la salud","Psicobiología","Psicología forense","Psicología organizacional","Psicología positiva","General"]},
+    "definicion_corta": {"type": "string", "minLength": 20, "maxLength": 300},
+    "definicion_tecnica": {"type": "string", "minLength": 50, "maxLength": 2000},
+    "ejemplo": {"type": "string", "minLength": 20, "maxLength": 500},
+    "no_confundir_con": {"type": "array", "items": {"type": "string"}},
+    "relaciones": {"type": "array", "items": {"type": "string"}},
+    "nivel_confianza": {"type": "string", "enum": ["A","B","C"]},
+    "fuentes": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "fecha_revision": {"type": "string", "format": "date"}
+  },
+  "additionalProperties": false
+}
