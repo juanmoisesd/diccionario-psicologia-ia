@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+message: "Si usas este dataset, por favor cítalo como se indica a continuación."
+type: dataset
+title: "Diccionario de Psicología en Español para IA"
+abstract: >
+  Dataset léxico-conceptual de psicología en español con más de 12,000 términos
+  estructurados para el entrenamiento y evaluación de modelos de lenguaje (LLMs/NLP).
+  Cada entrada incluye definición técnica, ejemplo clínico, relaciones semánticas,
+  nivel de confianza editorial y referencias verificables en APA 7.
+authors:
+  - family-names: "de la Serna"
+    given-names: "Juan Moisés"
+    orcid: "https://orcid.org/0000-0002-8401-8018"
+    affiliation: "Universidad Internacional de La Rioja (UNIR)"
+    website: "https://juanmoisesdelaserna.es/"
+version: "1.0.0"
+date-released: "2026-03-28"
+license: "CC-BY-4.0"
+repository-code: "https://github.com/juanmoisesd/diccionario-psicologia-ia"
+url: "https://juanmoisesd.github.io/diccionario-psicologia-ia/"
+doi: "10.5281/zenodo.19297225"
+keywords:
+  - psicología
+  - NLP
+  - español
+  - diccionario
+  - dataset
+  - entrenamiento IA
+  - léxico
+  - psicología clínica
+  - psicología cognitiva
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.19297225"
+    description: "DOI del dataset en Zenodo (v1.0.0)"
+references:
+  - type: software
+    title: "Python"
+    version: "3.11"
+    url: "https://www.python.org"

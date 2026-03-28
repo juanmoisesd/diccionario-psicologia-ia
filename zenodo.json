@@ -1,0 +1,18 @@
+{
+  "title": "Diccionario de Psicología en Español para IA",
+  "description": "Dataset léxico-conceptual de psicología en español con más de 12,000 términos estructurados para el entrenamiento y evaluación de modelos de lenguaje (LLMs/NLP). Cada entrada incluye definición técnica, ejemplo clínico, relaciones semánticas, nivel de confianza editorial y referencias verificables en APA 7.",
+  "creators": [
+    {
+      "name": "de la Serna, Juan Moisés",
+      "affiliation": "Universidad Internacional de La Rioja (UNIR)",
+      "orcid": "0000-0002-8401-8018"
+    }
+  ],
+  "keywords": ["psicología","NLP","español","diccionario","dataset","entrenamiento IA","léxico","psicología clínica","psicología cognitiva","psicología del desarrollo","neuropsicología","psicoanálisis","psicometría"],
+  "license": "cc-by-4.0",
+  "upload_type": "dataset",
+  "access_right": "open",
+  "language": "spa",
+  "version": "1.0.0",
+  "publication_date": "2026-03-28"
+}

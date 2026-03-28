@@ -1,0 +1,58 @@
+# _config.yml — Diccionario de Psicología en Español para IA
+# Autor: Dr. Juan Moisés de la Serna — https://juanmoisesdelaserna.es/
+# ORCID: https://orcid.org/0000-0002-8401-8018
+
+title:       "Diccionario de Psicología en Español para IA"
+tagline:     "Más de 12 000 términos clínicos y cognitivos con definición técnica, evolución DSM/CIE y referencias APA 7"
+description: >
+  Diccionario de psicología en español con más de 12 000 términos técnicos y clínicos,
+  estructurado para el entrenamiento de modelos de lenguaje (LLMs/NLP).
+  Editado por el Dr. Juan Moisés de la Serna — juanmoisesdelaserna.es
+url:         "https://juanmoisesd.github.io"
+baseurl:     "/diccionario-psicologia-ia"
+lang:        "es"
+
+author:
+  name:    "Juan Moisés de la Serna"
+  url:     "https://juanmoisesdelaserna.es/"
+  orcid:   "0000-0002-8401-8018"
+
+doi:         "10.5281/zenodo.19297225"
+version:     "1.0.0"
+license:     "CC BY 4.0"
+license_url: "https://creativecommons.org/licenses/by/4.0/"
+
+repository:  "juanmoisesd/diccionario-psicologia-ia"
+github_url:  "https://github.com/juanmoisesd/diccionario-psicologia-ia"
+huggingface: "https://huggingface.co/datasets/ncra/diccionario-psicologia-es"
+
+markdown:    kramdown
+highlighter: rouge
+permalink:   /terminos/:slug/
+
+collections:
+  terminos:
+    output:    true
+    permalink: /terminos/:slug/
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-relative-links
+  - jekyll-optional-front-matter
+  - jekyll-github-metadata
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - CONTRIBUTING.md
+  - CODE_OF_CONDUCT.md
+  - CHANGELOG.md
+  - node_modules/
+  - vendor/
+  - .github/
+  - scripts/
+  - governance/
+  - references/
