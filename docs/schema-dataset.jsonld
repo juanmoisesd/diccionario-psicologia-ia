@@ -1,0 +1,48 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "Dataset",
+  "name": "Diccionario de Psicología en Español para IA",
+  "description": "Dataset léxico-conceptual de psicología en español con más de 12,000 términos estructurados para el entrenamiento y evaluación de modelos de lenguaje (LLMs/NLP).",
+  "url": "https://juanmoisesd.github.io/diccionario-psicologia-ia/",
+  "identifier": "https://doi.org/10.5281/zenodo.19297225",
+  "version": "1.0.0",
+  "datePublished": "2026-03-28",
+  "dateModified": "2026-03-28",
+  "inLanguage": "es",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "creator": {
+    "@type": "Person",
+    "name": "Dr. Juan Moisés de la Serna",
+    "url": "https://juanmoisesdelaserna.es/",
+    "sameAs": "https://orcid.org/0000-0002-8401-8018"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Zenodo",
+    "url": "https://zenodo.org"
+  },
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/jsonlines",
+      "contentUrl": "https://github.com/juanmoisesd/diccionario-psicologia-ia/raw/main/data/terms.jsonl",
+      "name": "JSONL"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://github.com/juanmoisesd/diccionario-psicologia-ia/raw/main/data/terms.csv",
+      "name": "CSV"
+    }
+  ],
+  "keywords": [
+    "psicología",
+    "NLP",
+    "español",
+    "diccionario",
+    "dataset",
+    "LLM",
+    "entrenamiento IA"
+  ],
+  "isAccessibleForFree": true
+}
