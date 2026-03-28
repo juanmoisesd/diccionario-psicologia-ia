@@ -1,0 +1,35 @@
+{% assign a = site.data.author %}
+<header class="site-header" role="banner">
+  <div class="site-header__inner">
+    <div class="site-header__brand">
+      <a href="{{ site.baseurl }}/" class="site-header__logo" rel="home" title="{{ site.title }}">
+        <span class="site-header__title">{{ site.title }}</span>
+        <span class="site-header__tagline">{{ site.tagline }}</span>
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Navegación principal">
+      <ul class="site-nav__list">
+        <li><a href="{{ site.baseurl }}/" class="site-nav__link">Inicio</a></li>
+        <li class="site-nav__dropdown">
+          <a href="{{ site.baseurl }}/terminos/" class="site-nav__link">Términos ▾</a>
+          <ul class="site-nav__submenu" role="menu">
+            {% for area in site.data.areas.areas %}
+            <li role="menuitem">
+              <a href="{{ site.baseurl }}/terminos/{{ area.slug }}/">
+                {{ area.icono }} {{ area.nombre }}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </li>
+        <li><a href="{{ site.baseurl }}/docs/como-citar" class="site-nav__link">Citar</a></li>
+        <li><a href="{{ site.github_url }}" class="site-nav__link site-nav__link--external" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+      </ul>
+    </nav>
+    <div class="site-header__author">
+      <a href="{{ a.url }}" rel="author noopener noreferrer" target="_blank" title="Web del autor: {{ a.full_title }}">
+        ✍️ <span>{{ a.full_title }}</span>
+      </a>
+    </div>
+  </div>
+</header>

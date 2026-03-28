@@ -1,0 +1,105 @@
+{% comment %}
+  seo-head.html — Head SEO completo
+  Datos del autor desde _data/author.yml (fuente única)
+  Schema.org: DefinedTerm (conceptual) o MedicalCondition (diagnóstico)
+{% endcomment %}
+{% assign a = site.data.author %}
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+{% seo %}
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+<link rel="alternate" hreflang="es" href="{{ page.url | absolute_url }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+{% if page.tipo_termino == "diagnostico" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "MedicalCondition",
+  "name": {{ page.termino | jsonify }},
+  "alternateName": {{ page.term_id | jsonify }},
+  "description": {{ page.definicion_corta | strip_newlines | jsonify }},
+  "url": {{ page.url | absolute_url | jsonify }},
+  "inLanguage": "es",
+  "about": { "@type": "Thing", "name": {{ page.area | jsonify }} },
+  "isPartOf": {
+    "@type": "Dataset",
+    "name": {{ site.title | jsonify }},
+    "url": {{ site.url | append: site.baseurl | jsonify }},
+    "identifier": {{ site.doi | prepend: "https://doi.org/" | jsonify }}
+  },
+  "creator": {
+    "@type": "Person",
+    "name": {{ a.full_title | jsonify }},
+    "url": {{ a.url | jsonify }},
+    "sameAs": [{{ a.profiles.orcid.url | jsonify }}, {{ a.profiles.scholar.url | jsonify }}, {{ a.profiles.researchgate.url | jsonify }}]
+  },
+  "dateModified": {{ page.fecha_revision | jsonify }}
+}
+</script>
+{% else %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "DefinedTerm",
+  "name": {{ page.termino | jsonify }},
+  "termCode": {{ page.term_id | jsonify }},
+  "description": {{ page.definicion_corta | strip_newlines | jsonify }},
+  "url": {{ page.url | absolute_url | jsonify }},
+  "inLanguage": "es",
+  "inDefinedTermSet": {
+    "@type": "DefinedTermSet",
+    "name": {{ site.title | jsonify }},
+    "url": {{ site.url | append: site.baseurl | jsonify }},
+    "identifier": {{ site.doi | prepend: "https://doi.org/" | jsonify }}
+  },
+  "about": { "@type": "Thing", "name": {{ page.area | jsonify }} },
+  "creator": {
+    "@type": "Person",
+    "name": {{ a.full_title | jsonify }},
+    "url": {{ a.url | jsonify }},
+    "sameAs": [{{ a.profiles.orcid.url | jsonify }}, {{ a.profiles.scholar.url | jsonify }}, {{ a.profiles.researchgate.url | jsonify }}]
+  },
+  "dateModified": {{ page.fecha_revision | jsonify }}
+}
+</script>
+{% endif %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Person",
+  "name": {{ a.full_title | jsonify }},
+  "url": {{ a.url | jsonify }},
+  "jobTitle": {{ a.role | jsonify }},
+  "affiliation": { "@type": "Organization", "name": {{ a.affiliation | jsonify }} },
+  "description": {{ a.bio_short | strip_newlines | jsonify }},
+  "sameAs": [
+    {{ a.profiles.orcid.url | jsonify }},
+    {{ a.profiles.scholar.url | jsonify }},
+    {{ a.profiles.researchgate.url | jsonify }},
+    {{ a.profiles.linkedin.url | jsonify }},
+    {{ a.profiles.twitter.url | jsonify }},
+    {{ a.profiles.academia.url | jsonify }},
+    {{ a.profiles.zenodo.url | jsonify }}
+  ]
+}
+</script>
+
+{% if page.termino %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Inicio","item": {{ site.url | append: site.baseurl | jsonify }}},
+    {"@type":"ListItem","position":2,"name":"Terminos","item": {{ site.url | append: site.baseurl | append: "/terminos/" | jsonify }}},
+    {"@type":"ListItem","position":3,"name": {{ page.area | jsonify }},"item": {{ page.area | slugify | prepend: "/terminos/" | prepend: site.baseurl | prepend: site.url | jsonify }}},
+    {"@type":"ListItem","position":4,"name": {{ page.termino | jsonify }},"item": {{ page.url | absolute_url | jsonify }}}
+  ]
+}
+</script>
+{% endif %}

@@ -1,0 +1,32 @@
+{% assign a = site.data.author %}
+{% assign current_area = include.area %}
+<aside class="author-dbs" aria-labelledby="db-heading">
+  <h3 id="db-heading">Bases de datos del Dr. Juan Moisés de la Serna</h3>
+  <p class="author-dbs__intro">
+    El Dr. de la Serna ha publicado colecciones de investigación relacionadas con esta área,
+    disponibles en acceso abierto y citables con DOI:
+  </p>
+  <ul class="author-dbs__list">
+    {% for ds in a.datasets %}
+      {% assign area_match = false %}
+      {% for ds_area in ds.areas %}
+        {% if ds_area == current_area %}{% assign area_match = true %}{% endif %}
+      {% endfor %}
+      {% if area_match or current_area == "" %}
+      <li class="author-dbs__item">
+        <strong>{{ ds.titulo }}</strong>
+        <p>{{ ds.descripcion }}</p>
+        <a href="{{ ds.url }}" rel="noopener noreferrer" target="_blank" class="author-dbs__doi">DOI: {{ ds.doi }}</a>
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  <p class="author-dbs__footer">
+    Todos los recursos:
+    <a href="{{ a.url }}" rel="noopener noreferrer" target="_blank">{{ a.url }}</a>
+    &middot;
+    <a href="{{ a.profiles.zenodo.url }}" rel="noopener noreferrer" target="_blank">Zenodo</a>
+    &middot;
+    <a href="{{ a.profiles.orcid.url }}" rel="noopener noreferrer" target="_blank">ORCID</a>
+  </p>
+</aside>

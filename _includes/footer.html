@@ -1,0 +1,56 @@
+{% assign a = site.data.author %}
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__inner">
+
+    <div class="site-footer__author">
+      <p class="site-footer__author-name">
+        <strong>Autor y editor:</strong>
+        <a href="{{ a.url }}" rel="author noopener noreferrer" target="_blank">{{ a.full_title }}</a>
+        &mdash; {{ a.role }}, {{ a.affiliation }}
+      </p>
+      <p class="site-footer__author-orcid">
+        ORCID: <a href="{{ a.profiles.orcid.url }}" rel="noopener noreferrer" target="_blank">{{ a.profiles.orcid.id }}</a>
+        &ensp;|&ensp;
+        <a href="{{ a.profiles.scholar.url }}" rel="noopener noreferrer" target="_blank">Google Scholar</a>
+        &ensp;|&ensp;
+        <a href="{{ a.profiles.researchgate.url }}" rel="noopener noreferrer" target="_blank">ResearchGate</a>
+        &ensp;|&ensp;
+        <a href="{{ a.profiles.linkedin.url }}" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+        &ensp;|&ensp;
+        <a href="{{ a.profiles.twitter.url }}" rel="noopener noreferrer" target="_blank">{{ a.profiles.twitter.label }}</a>
+        &ensp;|&ensp;
+        <a href="{{ a.profiles.zenodo.url }}" rel="noopener noreferrer" target="_blank">Zenodo Open Data</a>
+      </p>
+    </div>
+
+    <div class="site-footer__project">
+      <p>
+        <strong>{{ site.title }}</strong> &mdash;
+        v{{ site.version }} &middot;
+        DOI: <a href="https://doi.org/{{ site.doi }}" rel="noopener noreferrer" target="_blank">{{ site.doi }}</a>
+        &middot;
+        Licencia: <a href="{{ site.license_url }}" rel="noopener noreferrer" target="_blank">{{ site.license }}</a>
+      </p>
+      <p>
+        <a href="{{ site.github_url }}" rel="noopener noreferrer" target="_blank">GitHub</a>
+        &ensp;|&ensp;
+        <a href="{{ site.huggingface }}" rel="noopener noreferrer" target="_blank">Hugging Face</a>
+        &ensp;|&ensp;
+        <a href="{{ site.zenodo_url }}" rel="noopener noreferrer" target="_blank">Zenodo</a>
+        &ensp;|&ensp;
+        <a href="{{ site.osf_url }}" rel="noopener noreferrer" target="_blank">OSF</a>
+        &ensp;|&ensp;
+        <a href="{{ site.baseurl }}/docs/como-citar">Cómo citar</a>
+      </p>
+    </div>
+
+    <div class="site-footer__legal">
+      <p>
+        &copy; 2026 <a href="{{ a.url }}" rel="noopener noreferrer" target="_blank">{{ a.full_title }}</a>.
+        Contenido bajo licencia <a href="{{ site.license_url }}" rel="noopener noreferrer" target="_blank">{{ site.license }}</a>.
+        El diccionario puede usarse libremente con atribución al autor.
+      </p>
+    </div>
+
+  </div>
+</footer>

@@ -1,0 +1,39 @@
+{% assign a = site.data.author %}
+{% if include.compact %}
+<div class="author-compact" itemscope itemtype="https://schema.org/Person">
+  <meta itemprop="name" content="{{ a.full_title }}">
+  <meta itemprop="sameAs" content="{{ a.profiles.orcid.url }}">
+  <span class="author-compact__label">Autor y editor:</span>
+  <strong><a href="{{ a.profiles.orcid.url }}" rel="author noopener noreferrer" target="_blank" itemprop="name">{{ a.full_title }}</a></strong>
+  <span class="author-compact__role" itemprop="jobTitle">{{ a.role }} &mdash; {{ a.affiliation }}</span>
+  <span class="author-compact__links">
+    <a href="{{ a.profiles.orcid.url }}" rel="noopener noreferrer" target="_blank">ORCID</a>
+    <a href="{{ a.profiles.scholar.url }}" rel="noopener noreferrer" target="_blank">Scholar</a>
+    <a href="{{ a.profiles.researchgate.url }}" rel="noopener noreferrer" target="_blank">ResearchGate</a>
+    <a href="{{ a.url }}" rel="noopener noreferrer" target="_blank">Web</a>
+  </span>
+</div>
+{% else %}
+<aside class="author-card" aria-label="Sobre el autor" itemscope itemtype="https://schema.org/Person">
+  <div class="author-card__inner">
+    <div class="author-card__avatar" aria-hidden="true"><span class="author-card__initials">JM</span></div>
+    <div class="author-card__info">
+      <p class="author-card__label">Autor y editor del diccionario</p>
+      <h2 class="author-card__name" itemprop="name">
+        <a href="{{ a.profiles.orcid.url }}" rel="author noopener noreferrer" target="_blank">{{ a.full_title }}</a>
+      </h2>
+      <p class="author-card__role" itemprop="jobTitle">
+        {{ a.role }} &middot; <span itemprop="affiliation" itemscope itemtype="https://schema.org/Organization"><span itemprop="name">{{ a.affiliation }}</span></span>
+      </p>
+      <p class="author-card__bio" itemprop="description">{{ a.bio_full }}</p>
+      <nav class="author-card__links" aria-label="Perfiles profesionales">
+        {% for profile in a.profiles %}
+        <a href="{{ profile[1].url }}" rel="noopener noreferrer" target="_blank" class="author-card__link" itemprop="sameAs" title="{{ profile[1].label }}">
+          <span aria-hidden="true">{{ profile[1].icon }}</span> {{ profile[1].label }}
+        </a>
+        {% endfor %}
+      </nav>
+    </div>
+  </div>
+</aside>
+{% endif %}
