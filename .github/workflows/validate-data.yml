@@ -1,0 +1,51 @@
+name: Validar dataset
+
+on:
+  push:
+    paths:
+      - 'data/terms.jsonl'
+      - 'data/schema.json'
+      - 'data/quality_flags.jsonl'
+  pull_request:
+    paths:
+      - 'data/terms.jsonl'
+      - 'data/schema.json'
+      - 'data/quality_flags.jsonl'
+
+jobs:
+  validate:
+    name: Validar estructura y duplicados
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependencias
+        run: pip install jsonschema
+
+      - name: Validar dataset
+        run: |
+          python scripts/validate_dataset.py \
+            --input data/terms.jsonl \
+            --schema data/schema.json
+
+      - name: Exportar CSV
+        run: |
+          python scripts/export_csv.py \
+            --input data/terms.jsonl \
+            --output data/terms.csv
+
+      - name: Verificar total de términos
+        run: |
+          TOTAL=$(wc -l < data/terms.jsonl)
+          echo "Total de términos: $TOTAL"
+          if [ "$TOTAL" -lt 1 ]; then
+            echo "ERROR: El dataset está vacío."
+            exit 1
+          fi
