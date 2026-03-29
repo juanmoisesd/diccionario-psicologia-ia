@@ -79,9 +79,9 @@ mark{background:#fff3b8;padding:0 1px;border-radius:2px}
 </div>
 <script>
 var allTerms=[];
+var DATA_URL="https://raw.githubusercontent.com/juanmoisesd/diccionario-psicologia-ia/main/data/terms.jsonl";
 function loadData(){
-  var base=location.href.indexOf("github.io")>-1?"/diccionario-psicologia-ia":"..";
-  fetch(base+"/data/terms.jsonl")
+  fetch(DATA_URL)
     .then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.text();})
     .then(function(text){
       allTerms=text.trim().split("\n").filter(function(l){return l.trim();}).map(function(l){try{return JSON.parse(l);}catch(e){return null;}}).filter(Boolean);
@@ -103,7 +103,8 @@ function populateAreas(){
 function esc(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
 function hi(text,q){
   if(!q||!text)return esc(text);
-  var re=new RegExp("("+q.replace(/[.*+?^${}()|[\\]\\\\]/g,"\\\\$&")+")","gi");
+  var safe=q.replace(/[.*+?^${}()|[\\]\\\\]/g,"\\\\$&");
+  var re=new RegExp("("+safe+")","gi");
   return esc(text).replace(re,"<mark>$1</mark>");
 }
 function renderResults(terms){
@@ -147,7 +148,7 @@ function showModal(t){
     +'<div class="badges-row"><span class="tag tag-area">'+esc(t.area)+'</span><span class="tag tag-conf">Confianza: '+esc(t.nivel_confianza)+'</span></div>'
     +'<section><h4>Definici\u00f3n breve</h4><p>'+esc(t.definicion_corta||"\u2014")+'</p></section>'
     +'<section><h4>Definici\u00f3n t\u00e9cnica</h4><p>'+esc(t.definicion_tecnica||"\u2014")+'</p></section>'
-    +(t.ejemplo?'<section><h4>Ejemplo</h4><p>'+esc(t.ejemplo)+'</p></section>':"")
+    +(t.ejemplo?'<section><h4>Ejemplo</h4><p>'+esc(t.ejemplo)+'</p></section>':"")  
     +(nc.length?'<section><h4>No confundir con</h4>'+listItems(nc)+'</section>':"")  
     +(rel.length?'<section><h4>T\u00e9rminos relacionados</h4>'+listItems(rel)+'</section>':"")  
     +(ft.length?'<section><h4>Fuentes</h4>'+listItems(ft)+'</section>':"")  
