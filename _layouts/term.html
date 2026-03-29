@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} — Diccionario de Psicología</title>
+  {% seo %}
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; color: #1a1a2e; }
+    h1 { color: #16213e; border-bottom: 3px solid #0f3460; padding-bottom: .5rem; }
+    .meta { background: #f0f4f8; padding: 1rem; border-radius: 8px; margin: 1rem 0; }
+    .meta span { display: inline-block; margin-right: 1.5rem; }
+    .badge { background: #0f3460; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: .85rem; }
+    .def { margin: 1.5rem 0; }
+    .def h2 { font-size: 1.1rem; color: #0f3460; }
+    .relations a { color: #e94560; }
+    nav.back { margin-top: 2rem; }
+    nav.back a { color: #0f3460; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <nav class="back"><a href="{{ '/' | relative_url }}">&larr; Índice</a></nav>
+  <h1>{{ page.title }}</h1>
+  <div class="meta">
+    <span><strong>Área:</strong> <span class="badge">{{ page.area }}</span></span>
+    <span><strong>ID:</strong> {{ page.term_id }}</span>
+    <span><strong>Confianza:</strong> {{ page.nivel_confianza }}</span>
+  </div>
+  <div class="def">
+    <h2>Definición corta</h2>
+    <p>{{ page.definicion_corta }}</p>
+  </div>
+  <div class="def">
+    <h2>Definición técnica</h2>
+    <p>{{ page.definicion_tecnica }}</p>
+  </div>
+  <div class="def">
+    <h2>Ejemplo</h2>
+    <p><em>{{ page.ejemplo }}</em></p>
+  </div>
+  {% if page.no_confundir_con %}
+  <div class="def">
+    <h2>No confundir con</h2>
+    <p>{{ page.no_confundir_con }}</p>
+  </div>
+  {% endif %}
+  {% if page.relaciones %}
+  <div class="def relations">
+    <h2>Relaciones</h2>
+    <p>{{ page.relaciones }}</p>
+  </div>
+  {% endif %}
+  <div class="def">
+    <h2>Fuentes</h2>
+    <p>{{ page.fuentes }}</p>
+  </div>
+  <footer style="margin-top:2rem;padding-top:1rem;border-top:1px solid #ddd;font-size:.85rem;color:#666;">
+    v{{ page.version }} · {{ page.fecha_revision }} · CC BY 4.0 · Dr. Juan Moisés de la Serna
+  </footer>
+</body>
+  </html>
