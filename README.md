@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19297225.svg)](https://doi.org/10.5281/zenodo.19297225)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Hugging Face](https://img.shields.io/badge/HuggingFace-Dataset-yellow)](https://huggingface.co/datasets/juanmoisesd/diccionario-psicologia-ia)
+[![Hugging Face](https://img.shields.io/badge/HuggingFace-Dataset-yellow)](https://huggingface.co/datasets/juanmoisesdelas/diccionario-psicologia-es)
 
 Dataset léxico-conceptual de psicología en español, diseñado para entrenamiento y fine-tuning de modelos de lenguaje (LLMs/NLP). Contiene **3,002 términos únicos** con 12 campos estructurados, cubriendo 18 áreas de la psicología.
 
@@ -101,7 +101,7 @@ data/
 ### Python
 ```python
 from datasets import load_dataset
-ds = load_dataset("juanmoisesd/diccionario-psicologia-ia")
+ds = load_dataset("juanmoisesdelas/diccionario-psicologia-es")
 ```
 
 ### Python (JSONL directo)
@@ -136,7 +136,7 @@ Usted es libre de compartir y adaptar el material, siempre que se otorgue la atr
 ## Plataformas de distribución
 
 - **GitHub:** [juanmoisesd/diccionario-psicologia-ia](https://github.com/juanmoisesd/diccionario-psicologia-ia)
-- **Hugging Face:** [juanmoisesd/diccionario-psicologia-ia](https://huggingface.co/datasets/juanmoisesd/diccionario-psicologia-ia)
+- **Hugging Face:** [juanmoisesdelas/diccionario-psicologia-es](https://huggingface.co/datasets/juanmoisesdelas/diccionario-psicologia-es)
 - **OSF:** [osf.io/83wvp](https://osf.io/83wvp/)
 - **Zenodo:** [DOI 10.5281/zenodo.19297225](https://doi.org/10.5281/zenodo.19297225)
 
