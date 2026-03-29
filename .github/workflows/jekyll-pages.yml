@@ -23,35 +23,32 @@ jobs:
       - name: Generate term pages from JSONL
         run: |
           mkdir -p _terminos
-          python3 -c "
-          import json, re
+          python3 << 'PYEOF'
+          import json, re, os
           def slugify(t):
               s = t.lower().strip()
-              s = re.sub(r'[^a-z0-9áéíóúüñ]+', '-', s)
-              return s.strip('-')
-          with open('data/terms.jsonl','r',encoding='utf-8') as f:
+              s = re.sub(r"[^a-z0-9\u00e1\u00e9\u00ed\u00f3\u00fa\u00fc\u00f1]+", "-", s)
+              return s.strip("-")
+          with open("data/terms.jsonl", "r", encoding="utf-8") as f:
               for line in f:
                   d = json.loads(line)
-                  slug = slugify(d['termino'])
-                  md = '---\n'
-                  md += 'layout: term\n'
-                  md += f'title: \"{d["termino"]}\"\n'
-                  md += f'term_id: \"{d["term_id"]}\"\n'
-                  md += f'area: \"{d["area"]}\"\n'
-                  md += f'definicion_corta: \"{d["definicion_corta"]}\"\n'
-                  md += f'definicion_tecnica: \"{d["definicion_tecnica"]}\"\n'
-                  md += f'ejemplo: \"{d["ejemplo"]}\"\n'
-                  md += f'no_confundir_con: \"{d.get("no_confundir_con","")}\"\n'
-                  md += f'relaciones: \"{d.get("relaciones","")}\"\n'
-                  md += f'nivel_confianza: \"{d["nivel_confianza"]}\"\n'
-                  md += f'fuentes: \"{d["fuentes"]}\"\n'
-                  md += f'version: \"{d["version"]}\"\n'
-                  md += f'fecha_revision: \"{d["fecha_revision"]}\"\n'
-                  md += '---\n'
-                  with open(f'_terminos/{slug}.md','w',encoding='utf-8') as out:
-                      out.write(md)
-          print('Generated term pages')
-          "
+                  slug = slugify(d["termino"])
+                  out_lines = []
+                  out_lines.append("---")
+                  out_lines.append("layout: term")
+                  keys = ["termino","term_id","area","definicion_corta","definicion_tecnica","ejemplo","no_confundir_con","relaciones","nivel_confianza","fuentes","version","fecha_revision"]
+                  for key in keys:
+                      val = str(d.get(key, ""))
+                      val = val.replace('"', '\\"')
+                      if key == "termino":
+                          out_lines.append('title: "' + val + '"')
+                      out_lines.append(key + ': "' + val + '"')
+                  out_lines.append("---")
+                  fpath = os.path.join("_terminos", slug + ".md")
+                  with open(fpath, "w", encoding="utf-8") as out:
+                      out.write('\n'.join(out_lines) + '\n')
+          print("Generated term pages")
+          PYEOF
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
