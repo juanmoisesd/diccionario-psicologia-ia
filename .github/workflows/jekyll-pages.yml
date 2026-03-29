@@ -1,0 +1,77 @@
+name: Deploy Jekyll Wiki
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate term pages from JSONL
+        run: |
+          mkdir -p _terminos
+          python3 -c "
+          import json, re
+          def slugify(t):
+              s = t.lower().strip()
+              s = re.sub(r'[^a-z0-9áéíóúüñ]+', '-', s)
+              return s.strip('-')
+          with open('data/terms.jsonl','r',encoding='utf-8') as f:
+              for line in f:
+                  d = json.loads(line)
+                  slug = slugify(d['termino'])
+                  md = '---\n'
+                  md += 'layout: term\n'
+                  md += f'title: \"{d["termino"]}\"\n'
+                  md += f'term_id: \"{d["term_id"]}\"\n'
+                  md += f'area: \"{d["area"]}\"\n'
+                  md += f'definicion_corta: \"{d["definicion_corta"]}\"\n'
+                  md += f'definicion_tecnica: \"{d["definicion_tecnica"]}\"\n'
+                  md += f'ejemplo: \"{d["ejemplo"]}\"\n'
+                  md += f'no_confundir_con: \"{d.get("no_confundir_con","")}\"\n'
+                  md += f'relaciones: \"{d.get("relaciones","")}\"\n'
+                  md += f'nivel_confianza: \"{d["nivel_confianza"]}\"\n'
+                  md += f'fuentes: \"{d["fuentes"]}\"\n'
+                  md += f'version: \"{d["version"]}\"\n'
+                  md += f'fecha_revision: \"{d["fecha_revision"]}\"\n'
+                  md += '---\n'
+                  with open(f'_terminos/{slug}.md','w',encoding='utf-8') as out:
+                      out.write(md)
+          print('Generated term pages')
+          "
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
