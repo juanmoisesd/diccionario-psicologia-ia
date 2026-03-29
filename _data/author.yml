@@ -1,36 +1,28 @@
-# _data/author.yml — Fuente única de verdad para datos del autor
-name:         "Juan Moisés de la Serna"
-name_short:   "J. M. de la Serna"
-name_apa:     "de la Serna, J. M."
-name_bibtex: 'de la Serna, Juan Mois{\'e}s'
-title:        "Dr."
-full_title:   "Dr. Juan Moisés de la Serna"
-role:         "Profesor e Investigador"
-affiliation:  "Universidad Internacional de La Rioja (UNIR)"
-degree:       "Doctor en Psicología (Universidad de Sevilla) · Máster en Neurociencias"
+# _data/author.yml
+name: "Juan Moisés de la Serna"
+name_short: "J. M. de la Serna"
+name_apa: "de la Serna, J. M."
+name_bibtex: "de la Serna, Juan Mois\u00e9s"
+title: "Dr."
+full_title: "Dr. Juan Moisés de la Serna"
+role: "Profesor e Investigador"
+affiliation: "Universidad Internacional de La Rioja (UNIR)"
+degree: "Doctor en Psicología (Universidad de Sevilla)"
 bio_short: >
-  Doctor en Psicología por la Universidad de Sevilla. Especialista en neuroeconomía,
-  inteligencia artificial aplicada y psicología del comportamiento.
-  Más de 290 publicaciones científicas.
-url:     "https://juanmoisesdelaserna.es/"
+  Doctor en Psicología por la Universidad de Sevilla.
+  Especialista en neuroeconomía e IA aplicada.
+url: "https://juanmoisesdelaserna.es/"
 profiles:
   orcid:
-    url:   "https://orcid.org/0000-0002-8401-8018"
-    id:    "0000-0002-8401-8018"
+    url: "https://orcid.org/0000-0002-8401-8018"
+    id: "0000-0002-8401-8018"
     label: "ORCID"
   scholar:
-    url:   "https://scholar.google.es/citations?user=PVb8eTIAAAAJ&hl=es"
+    url: "https://scholar.google.es/citations?user=PVb8eTIAAAAJ&hl=es"
     label: "Google Scholar"
   researchgate:
-    url:   "https://www.researchgate.net/profile/Juan_Moises_De_La_Serna"
+    url: "https://www.researchgate.net/profile/Juan_Moises_De_La_Serna"
     label: "ResearchGate"
   zenodo:
-    url:   "https://zenodo.org/communities/juanmoisesd-open-data/"
+    url: "https://zenodo.org/communities/juanmoisesd-open-data/"
     label: "Zenodo Open Data"
-datasets:
-  - id:          "neurociencia-salud-mental"
-    titulo:      "Open Research Collections — Neurociencias y Salud Mental"
-    doi:         "10.5281/zenodo.19151868"
-    url:         "https://doi.org/10.5281/zenodo.19151868"
-    areas:       ["Psicología clínica", "Psicología cognitiva", "Neuropsicología"]
-  - id:          "economia-conductual"
