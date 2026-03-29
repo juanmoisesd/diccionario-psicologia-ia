@@ -2,7 +2,7 @@
 name:         "Juan Moisés de la Serna"
 name_short:   "J. M. de la Serna"
 name_apa:     "de la Serna, J. M."
-name_bibtex:  "de la Serna, Juan Mois{\'e}s"
+name_bibtex: 'de la Serna, Juan Mois{\'e}s'
 title:        "Dr."
 full_title:   "Dr. Juan Moisés de la Serna"
 role:         "Profesor e Investigador"
@@ -34,7 +34,3 @@ datasets:
     url:         "https://doi.org/10.5281/zenodo.19151868"
     areas:       ["Psicología clínica", "Psicología cognitiva", "Neuropsicología"]
   - id:          "economia-conductual"
-    titulo:      "Open Research Collections — Economía del Comportamiento"
-    doi:         "10.5281/zenodo.19145316"
-    url:         "https://doi.org/10.5281/zenodo.19145316"
-    areas:       ["Psicología social", "Psicología conductual", "Psicología forense"]
